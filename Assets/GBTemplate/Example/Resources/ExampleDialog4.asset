@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfd6a722e96beb43b76d82527492554, type: 3}
+  m_Name: ExampleDialog4
+  m_EditorClassIdentifier: 
+  Sentences:
+  - Text: You could expand this to support character images,
+    TypeSound: {fileID: 0}
+  - Text: and add the portrait to the scriptable object
+    TypeSound: {fileID: 0}
+  - Text: or the name of the npc outside of this panel...
+    TypeSound: {fileID: 0}
+  - Text: The possibilities are endless!
+    TypeSound: {fileID: 0}
