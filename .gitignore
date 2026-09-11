@@ -13,11 +13,6 @@
 # Debug symbols
 *.pdb
 
-# NuGet Packages
-*.nupkg
-**/[Pp]ackages/*
-!**/[Pp]ackages/build/
-
 # .NET build artifacts
 artifacts/
 
@@ -98,13 +93,6 @@ x86/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-
-# NuGet
-*.nupkg
-**/[Pp]ackages/*
-!**/[Pp]ackages/build/
-*.nuget.props
-*.nuget.targets
 
 # Publish Web Output
 *.[Pp]ublish.xml
