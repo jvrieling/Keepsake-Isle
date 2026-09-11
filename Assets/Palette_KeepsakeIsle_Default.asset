@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22b81de0497758f408919b3ef798e8d9, type: 3}
-  m_Name: KeepsakeIsle_Default
+  m_Name: Palette_KeepsakeIsle_Default
   m_EditorClassIdentifier: Assembly-CSharp::ColorPalette
   Darkest: {r: 0.15686275, g: 0.20784314, b: 0.5764706, a: 1}
   Dark: {r: 0, g: 0.4117647, b: 0.36078432, a: 1}
