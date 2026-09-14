@@ -4,6 +4,10 @@ using ChickenCoop.Util;
 
 public class Grid : MonoBehaviour
 {
+    public const float CELL_SIZE = 20f / 100f;
+
+    public static Grid Instance;
+
     [SerializeField]
     private List<List<GridCell>> grid;
 
@@ -32,12 +36,14 @@ public class Grid : MonoBehaviour
             }
         }
 
-        worldCellSize = 20f / 100f;
+        worldCellSize = CELL_SIZE;
     }
 
     private void Awake()
     {
-        worldCellSize = 20f / 100f;
+        Instance = this;
+
+        worldCellSize = CELL_SIZE;
         GenerateGrid();
     }
 
@@ -97,6 +103,32 @@ public class Grid : MonoBehaviour
         if (grid == null) return null;
 
         return grid.GetRandomElement();
+    }
+
+    public GridCell GetNearestCell(Vector2 worldPosition)
+    {
+        float nearestDistance = float.MaxValue;
+        GridCell nearestCell = null;
+
+        if (worldPosition.y < grid[0][0].WorldPosition.y)
+        {
+            return null;
+        }
+
+        foreach (List<GridCell> column in grid)
+        {
+            foreach (GridCell cell in column)
+            {
+                float dist = Vector2.Distance(worldPosition, cell.WorldPosition);
+                if (dist < nearestDistance && dist < CELL_SIZE)
+                {
+                    nearestDistance = dist;
+                    nearestCell = cell;
+                }
+            }
+        }
+
+        return nearestCell;
     }
 
     public void OnDrawGizmosSelected()
