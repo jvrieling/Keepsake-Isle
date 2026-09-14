@@ -1,16 +1,115 @@
 using UnityEngine;
+using System.Collections.Generic;
+using ChickenCoop.Util;
 
 public class Grid : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private List<List<GridCell>> grid;
+
+    [SerializeField]
+    private int width;
+
+    [SerializeField]
+    private int height;
+
+    [SerializeField]
+    private Transform bottomLeftCell;
+
+    public int totalCells;
+
+    public float worldCellSize;
+
+    private void OnValidate()
     {
-        
+        totalCells = 0;
+        if (grid != null)
+        foreach (var col in grid)
+        {
+            foreach (var cell in col)
+            {
+                totalCells++;
+            }
+        }
+
+        worldCellSize = 20f / 100f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        worldCellSize = 20f / 100f;
+        GenerateGrid();
+    }
+
+    [ContextMenu("Generate Grid")]
+    public void GenerateGrid()
+    {
+        DestroyGrid();
+
+        grid = new List<List<GridCell>>();
+
+        Vector2 currentPosition = bottomLeftCell.position;
+
+        for (int i = 0; i < width; i++)
+        {
+            grid.Add(new List<GridCell>());
+
+            for (int j = 0; j < height; j++)
+            {
+                GridCell cell = new GridCell();
+
+                cell.InitializeCell(currentPosition, i, j);
+
+                grid[i].Add(cell);
+
+                //Debug.Log($"Generated cell at {currentPosition} in {i}{j}");
+
+                currentPosition.y += worldCellSize;
+            }
+
+            currentPosition.y = bottomLeftCell.position.y;
+            currentPosition.x += worldCellSize;
+        }
+    }
+
+    [ContextMenu("Destroy Grid")]
+    public void DestroyGrid()
+    {
+        if (grid == null) return;
+
+        foreach (List<GridCell> col in grid)
+        {
+            if (col == null) continue;
+
+            foreach(GridCell cell in col)
+            {
+                if (cell == null) continue;
+
+                cell.DestroyObject();
+            }
+        }
+
+        grid.Clear();
+    }
+
+    public List<GridCell> GetRandomColumn()
+    {
+        if (grid == null) return null;
+
+        return grid.GetRandomElement();
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.rebeccaPurple;
+        if (grid == null ) return; 
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (grid[i] == null || grid[i][j] == null) return;
+                Gizmos.DrawSphere(grid[i][j].WorldPosition, worldCellSize / 2.1f);
+            }
+        }
     }
 }

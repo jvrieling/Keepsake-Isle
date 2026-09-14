@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 15de363f16f360c459a91543fc0bcda2
+guid: d8d275b189ba5e444ba34a18f3ee7c88
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: FrameSample
+  - name: Gem_Square
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 160
-      height: 144
-    spriteID: f8e7f086a8d02424694703a6b9f8e2f2
+      width: 18
+      height: 18
+    spriteID: 2d78a20278c246d4f8608ed10376fbbc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2246699547
+      value0: 1666916141
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: FrameSample
+    name: Gem_Square
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: FrameSample
+    - name: Gem_Square
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 160
-        height: 144
-      spriteId: f8e7f086a8d02424694703a6b9f8e2f2
+        width: 18
+        height: 18
+      spriteId: 2d78a20278c246d4f8608ed10376fbbc
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 160, y: 144}
-  previousTextureSize: {x: 256, y: 256}
+  canvasSize: {x: 18, y: 18}
+  previousTextureSize: {x: 32, y: 32}

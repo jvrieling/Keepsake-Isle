@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22b81de0497758f408919b3ef798e8d9, type: 3}
-  m_Name: Palette_KeepsakeIsle_Default
+  m_Name: Palette_KeepsakeIsle_Old
   m_EditorClassIdentifier: Assembly-CSharp::ColorPalette
-  Darkest: {r: 0.12941177, g: 0.043137256, b: 0.105882354, a: 1}
-  Dark: {r: 0.3019608, g: 0.13333334, b: 0.17254902, a: 1}
-  Light: {r: 0.6156863, g: 0.39607844, b: 0.29803923, a: 1}
-  Lightest: {r: 0.8117647, g: 0.67058825, b: 0.31764707, a: 1}
+  Darkest: {r: 0.15686275, g: 0.20784314, b: 0.5764706, a: 1}
+  Dark: {r: 0, g: 0.4117647, b: 0.36078432, a: 1}
+  Light: {r: 1, g: 0.7176471, b: 0.3019608, a: 1}
+  Lightest: {r: 1, g: 0.9607843, b: 0.6156863, a: 1}
