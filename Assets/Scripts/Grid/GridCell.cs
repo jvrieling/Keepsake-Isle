@@ -4,8 +4,10 @@ using UnityEngine;
 [Serializable]
 public class GridCell
 {
+    [field: SerializeField]
     public GridObject GridObject { get; private set; }
     public (int, int) GridIndex { get; private set; }
+    [field: SerializeField]
     public Vector2 WorldPosition { get; private set; }
 
     public bool IsOccupied => GridObject != null;

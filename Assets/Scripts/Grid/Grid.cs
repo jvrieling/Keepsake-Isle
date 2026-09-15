@@ -4,7 +4,7 @@ using ChickenCoop.Util;
 
 public class Grid : MonoBehaviour
 {
-    public const float CELL_SIZE = 20f / 100f;
+    public const float CELL_SIZE = 19f / 100f;
 
     public static Grid Instance;
 
@@ -105,12 +105,33 @@ public class Grid : MonoBehaviour
         return grid.GetRandomElement();
     }
 
+    public List<GridCell> GetNearestColumn(Vector2 worldPosition)
+    {
+        float nearestDistance = float.MaxValue;
+        int nearestColIndex = -1;
+
+        for (int i = 0; i < grid.Count; i++)
+        {
+            List<GridCell> col = grid[i];
+            float dist = Vector2.Distance(worldPosition, col[0].WorldPosition);
+            if (dist < nearestDistance)
+            {
+                nearestDistance = dist;
+                nearestColIndex = i;
+            }
+        }
+
+        if (nearestColIndex == -1) return null;
+
+        return grid[nearestColIndex];
+    }
+
     public GridCell GetNearestCell(Vector2 worldPosition)
     {
         float nearestDistance = float.MaxValue;
         GridCell nearestCell = null;
 
-        if (worldPosition.y < grid[0][0].WorldPosition.y)
+        if (worldPosition.y < grid[0][0].WorldPosition.y - (CELL_SIZE / 2))
         {
             return null;
         }
@@ -133,14 +154,23 @@ public class Grid : MonoBehaviour
 
     public void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.rebeccaPurple;
         if (grid == null ) return; 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
                 if (grid[i] == null || grid[i][j] == null) return;
-                Gizmos.DrawSphere(grid[i][j].WorldPosition, worldCellSize / 2.1f);
+
+                if (grid[i][j].IsOccupied)
+                {
+                    Gizmos.color = Color.red;
+                }
+                else
+                {
+                    Gizmos.color = Color.rebeccaPurple;
+                }
+
+                Gizmos.DrawSphere(grid[i][j].WorldPosition, 0.01f);
             }
         }
     }

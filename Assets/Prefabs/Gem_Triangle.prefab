@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3414743833096959149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4891345, y: 0.074, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,6 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13915922d50e074a898e2de520639af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gem
+  hangTime: 1
+  fallSpeed: 0.2
+  colourId: 1
+  timeBetweenClears: 0.2
+  clearParticle: {fileID: 6352673607928727099, guid: 1509e7f4e707b9f4581826d0f1e5d8a6, type: 3}
+  currentCell:
+    <GridObject>k__BackingField: {fileID: 0}
+    <WorldPosition>k__BackingField: {x: 0, y: 0}
+  lastCheckedPos: {x: 0, y: 0}
 --- !u!1 &8003337825268805526
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +80,7 @@ Transform:
   m_GameObject: {fileID: 8003337825268805526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0018, y: -0.0017, z: 0}
+  m_LocalPosition: {x: 0.002, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

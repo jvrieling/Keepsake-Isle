@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8d275b189ba5e444ba34a18f3ee7c88
+guid: 2306ca46e9b1ea74395e38590922385d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Gem_Square
+  - name: BattleWindow
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 18
-      height: 18
-    spriteID: 2d78a20278c246d4f8608ed10376fbbc
+      width: 60
+      height: 60
+    spriteID: b753304457c075e4f8bc4b92e9eb3722
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,30 +148,150 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 72
+      width: 60
+      height: 60
+    spriteID: 31fe951ec76678848b07d17f85de8e10
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 72}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 140
+      width: 60
+      height: 60
+    spriteID: ae9e241fdd941314695122fb631198f6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 140}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 4
+      width: 60
+      height: 60
+    spriteID: 1a7be2f5872bc3341994b8022b1ad1e5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 4}
+  - name: Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 72
+      width: 60
+      height: 60
+    spriteID: 61e3d2d945e63f347af251d51e3d3890
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 72}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1666916141
+      value0: 3274331956
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Gem_Square
+    name: BattleWindow
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Gem_Square
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 18
-        height: 18
-      spriteId: 2d78a20278c246d4f8608ed10376fbbc
+        width: 60
+        height: 60
+      spriteId: b753304457c075e4f8bc4b92e9eb3722
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 60
+        height: 60
+      spriteId: 31fe951ec76678848b07d17f85de8e10
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 60
+        height: 60
+      spriteId: ae9e241fdd941314695122fb631198f6
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 60
+        height: 60
+      spriteId: 1a7be2f5872bc3341994b8022b1ad1e5
+    - name: Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 60
+        height: 60
+      spriteId: 61e3d2d945e63f347af251d51e3d3890
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +301,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 18, y: 18}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 60, y: 60}
+  previousTextureSize: {x: 256, y: 256}
