@@ -329,7 +329,7 @@ MonoBehaviour:
   - {fileID: 7105291397431187011, guid: fa1d5544906641b499984741150027ee, type: 3}
   - {fileID: 430750853973036992, guid: 8ed58acc5aa7ae14e92e0a97961b2fab, type: 3}
   - {fileID: 5102194892044716671, guid: a8b483b7dea001247b2eaa8267a1ad2b, type: 3}
-  - {fileID: 1385094082668286253, guid: 3f217708bfb8e104292d592e95f1902b, type: 3}
+  - {fileID: 2221391643748340631, guid: 6bcf974b8b35bf2478e83ea09e4cd85a, type: 3}
   - {fileID: 1385094082668286253, guid: 3f217708bfb8e104292d592e95f1902b, type: 3}
   chestPrefab: {fileID: 0}
 --- !u!1 &814160224
