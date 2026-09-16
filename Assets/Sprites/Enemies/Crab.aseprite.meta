@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 610806888babbcf40a392d1fe063fd00
+guid: d77f27a28c623534cae3c67677b38a94
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Gem_Template
+  - name: Crab
     originalName: 
-    pivot: {x: 9, y: 0}
+    pivot: {x: -0.17391305, y: -1.4615384}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1
-      height: 1
-    spriteID: 872e3d472ed9ea74888fb9fc48bfe2a9
+      width: 23
+      height: 13
+    spriteID: 2833a4e330b24e94bb3123e67d93a22b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3653170868
+      value0: 3726548432
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Gem_Template
+    name: Crab
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Gem_Template
+    - name: Crab
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 1
-        height: 1
-      spriteId: 872e3d472ed9ea74888fb9fc48bfe2a9
+        x: 34
+        y: 19
+        width: 23
+        height: 13
+      spriteId: 2833a4e330b24e94bb3123e67d93a22b
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 18, y: 18}
-  previousTextureSize: {x: 16, y: 16}
+  canvasSize: {x: 60, y: 60}
+  previousTextureSize: {x: 32, y: 32}

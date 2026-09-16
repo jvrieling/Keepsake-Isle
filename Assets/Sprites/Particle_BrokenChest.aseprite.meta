@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 610806888babbcf40a392d1fe063fd00
+guid: 397854d95034bb5439677365e8abda80
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Gem_Template
+  - name: Frame_0
     originalName: 
-    pivot: {x: 9, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1
-      height: 1
-    spriteID: 872e3d472ed9ea74888fb9fc48bfe2a9
+      width: 7
+      height: 7
+    spriteID: cb40299b7e0befa478cd4d39354857cc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,30 +148,90 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5833333, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 19
+      y: 4
+      width: 6
+      height: 7
+    spriteID: 416bee74aace5da4cbc4428ce55be912
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 19, y: 4}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 19
+      width: 5
+      height: 6
+    spriteID: 0213aa567a6b99f4bb6c97ee139e90a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 19}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3653170868
+      value0: 3446873965
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Gem_Template
+    name: Particle_BrokenChest
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Gem_Template
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 1
-        height: 1
-      spriteId: 872e3d472ed9ea74888fb9fc48bfe2a9
+        width: 7
+        height: 7
+      spriteId: cb40299b7e0befa478cd4d39354857cc
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 7
+      spriteId: 416bee74aace5da4cbc4428ce55be912
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 1
+        y: 0
+        width: 5
+        height: 6
+      spriteId: 0213aa567a6b99f4bb6c97ee139e90a9
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +241,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 18, y: 18}
-  previousTextureSize: {x: 16, y: 16}
+  canvasSize: {x: 7, y: 7}
+  previousTextureSize: {x: 32, y: 32}

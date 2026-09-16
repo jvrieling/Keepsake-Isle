@@ -13,10 +13,11 @@ public enum GridObjectState
 
 public abstract class GridObject : MonoBehaviour
 {
-    private const float HANG_Y = 0.646f;
+    private const float HANG_Y = 0.655f;
 
     public event Action<GridObject> OnDestroyed;
     public event Action<GridObject> OnGrounded;
+    public event Action<GridObject> OnFallingStarted;
 
     [SerializeField]
     private float hangTime = 1;
@@ -73,6 +74,11 @@ public abstract class GridObject : MonoBehaviour
                 if (CheckForSpaceBelow())
                 {
                     State = GridObjectState.Falling;
+                    OnFallingStarted?.Invoke(this);
+                }
+                else
+                {
+                    Debug.Log("!! -- NO SPACE TO FALL -- !!");
                 }
             }
         }

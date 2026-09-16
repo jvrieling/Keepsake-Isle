@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322196920}
   - component: {fileID: 322196919}
+  - component: {fileID: 322196921}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Untagged
@@ -285,6 +286,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322196921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322196918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1371934536cdbd34386991fe2463e6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GemSpawner
+  timeBetweenSpawns: 3
+  shortestTimeBetweenSpawns: 1
+  timeToReachShortest: 15
+  timeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gemPrefabs:
+  - {fileID: 7105291397431187011, guid: fa1d5544906641b499984741150027ee, type: 3}
+  - {fileID: 430750853973036992, guid: 8ed58acc5aa7ae14e92e0a97961b2fab, type: 3}
+  chestPrefab: {fileID: 0}
 --- !u!1 &814160224
 GameObject:
   m_ObjectHideFlags: 0
