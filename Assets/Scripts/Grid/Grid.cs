@@ -1,6 +1,77 @@
 using UnityEngine;
 using System.Collections.Generic;
 using ChickenCoop.Util;
+using System;
+using System.Collections;
+using System.Linq;
+
+public class Column : IEnumerable<GridCell>
+{
+    public List<GridCell> cells;
+    public GridObject hangingObject;
+
+    public Column()
+    {
+        cells = new List<GridCell>();
+    }
+
+    public void SetHangingObject(GridObject newObject)
+    {
+        if (newObject.State != GridObjectState.Hanging) return;
+
+        ClearHangingObject();
+
+        hangingObject = newObject;
+
+        hangingObject.OnDestroyed += HandleDestroyed;
+        hangingObject.OnFallingStarted += HandleFallingStarted;
+    }
+
+    private void ClearHangingObject()
+    {
+        if (hangingObject == null) return;
+
+        hangingObject.OnDestroyed -= HandleDestroyed;
+        hangingObject.OnFallingStarted -= HandleFallingStarted;
+        hangingObject = null;
+    }
+
+    private void HandleFallingStarted(GridObject @object)
+    {
+        ClearHangingObject();
+    }
+
+    private void HandleDestroyed(GridObject @object)
+    {
+        ClearHangingObject();
+    }
+
+    public void Add(GridCell cell)
+    {
+        cells.Add(cell);
+    }
+
+    public IEnumerator<GridCell> GetEnumerator()
+    {
+        foreach (GridCell gridObject in cells)    
+        {
+            yield return gridObject;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public GridCell this[int index]
+    {
+        get => cells[index];
+        set => cells[index] = value;
+    }
+
+    public static implicit operator List<GridCell>(Column col) => col.cells;
+}
 
 public class Grid : MonoBehaviour
 {
@@ -9,7 +80,7 @@ public class Grid : MonoBehaviour
     public static Grid Instance;
 
     [SerializeField]
-    private List<List<GridCell>> grid;
+    private List<Column> grid;
 
     [SerializeField]
     private int width;
@@ -52,13 +123,13 @@ public class Grid : MonoBehaviour
     {
         DestroyGrid();
 
-        grid = new List<List<GridCell>>();
+        grid = new List<Column>();
 
         Vector2 currentPosition = bottomLeftCell.position;
 
         for (int i = 0; i < width; i++)
         {
-            grid.Add(new List<GridCell>());
+            grid.Add(new Column());
 
             for (int j = 0; j < height; j++)
             {
@@ -67,8 +138,6 @@ public class Grid : MonoBehaviour
                 cell.InitializeCell(currentPosition, i, j);
 
                 grid[i].Add(cell);
-
-                //Debug.Log($"Generated cell at {currentPosition} in {i}{j}");
 
                 currentPosition.y += worldCellSize;
             }
@@ -83,7 +152,7 @@ public class Grid : MonoBehaviour
     {
         if (grid == null) return;
 
-        foreach (List<GridCell> col in grid)
+        foreach (Column col in grid)
         {
             if (col == null) continue;
 
@@ -98,14 +167,23 @@ public class Grid : MonoBehaviour
         grid.Clear();
     }
 
-    public List<GridCell> GetRandomColumn()
+    public Column GetRandomColumn()
     {
         if (grid == null) return null;
 
         return grid.GetRandomElement();
     }
 
-    public List<GridCell> GetNearestColumn(Vector2 worldPosition)
+    public Column GetRandomAvailableColumn()
+    {
+        if (grid == null) return null;
+
+        List<Column> availableColumns = grid.Where(c => c.hangingObject == null).ToList();
+
+        return availableColumns.GetRandomElement();
+    }
+
+    public Column GetNearestColumn(Vector2 worldPosition)
     {
         float nearestDistance = float.MaxValue;
         int nearestColIndex = -1;
@@ -131,7 +209,7 @@ public class Grid : MonoBehaviour
         float nearestDistance = float.MaxValue;
         GridCell nearestCell = null;
 
-        if (worldPosition.y < grid[0][0].WorldPosition.y - (CELL_SIZE / 2))
+        if (worldPosition.y < grid[0].cells[0].WorldPosition.y - (CELL_SIZE / 2))
         {
             return null;
         }

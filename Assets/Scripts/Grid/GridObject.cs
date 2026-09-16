@@ -49,11 +49,12 @@ public abstract class GridObject : MonoBehaviour
 
     protected virtual void Start()
     {
+        Column column = Grid.Instance.GetRandomAvailableColumn();
+        column.SetHangingObject(this);
+
         Vector3 startingPos = Vector3.zero;
-
+        startingPos.x = column[0].WorldPosition.x;
         startingPos.y = HANG_Y;
-
-        startingPos.x = Grid.Instance.GetRandomColumn()[0].WorldPosition.x;
 
         transform.position = startingPos;
     }
@@ -114,13 +115,10 @@ public abstract class GridObject : MonoBehaviour
 
     protected virtual void TryClear()
     {
-        Debug.Log("Trying clear!!");
-
         List<GridCell> column = Grid.Instance.GetNearestColumn(transform.position);
 
         if (column == null)
         {
-            Debug.Log("No column!!");
             return;
         }
 
@@ -133,7 +131,6 @@ public abstract class GridObject : MonoBehaviour
         {
             if (column[i] == null || column[i].GridObject == null)
             {
-                Debug.Log("No grid object");
                 continue;
             }
 
@@ -142,12 +139,10 @@ public abstract class GridObject : MonoBehaviour
 
             if (column[i].GridObject == this)
             {
-                Debug.Log("skipping this");
                 thisIndex = i;
                 continue;
             }
 
-            Debug.Log($"Comparing {this.colourId} to the other: {column[i].GridObject.colourId}");
             if (column[i].GridObject.colourId == this.colourId)
             {
                 connectionMade = true;
@@ -157,7 +152,6 @@ public abstract class GridObject : MonoBehaviour
 
         if (connectionMade)
         {
-            Debug.Log("Connection made!!");
             column[matchindIndex].GridObject.TriggerClearRoutine(column.GetRange(matchindIndex, thisIndex - matchindIndex + 1));
         }
     }
