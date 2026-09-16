@@ -125,6 +125,7 @@ public abstract class GridObject : MonoBehaviour
         bool connectionMade = false;
         int thisIndex = -1;
         int matchindIndex = -1;
+        int blockerIndex = -1;
 
         // Start at the top of the column and go down
         for (int i = column.Count - 1; i >= 0; i--)
@@ -137,13 +138,19 @@ public abstract class GridObject : MonoBehaviour
             // If there's clearing objects already in this column, don't allow any clearing.
             if (column[i].GridObject.MarkedForClearing) return;
 
+            // Mark the blocker index if we find one
+            if (colourId != -1 && column[i].GridObject.colourId == -1)
+            {
+                blockerIndex = i;
+            }
+
             if (column[i].GridObject == this)
             {
                 thisIndex = i;
                 continue;
             }
 
-            if (column[i].GridObject.colourId == this.colourId)
+            if (blockerIndex == -1 && column[i].GridObject.colourId == this.colourId)
             {
                 connectionMade = true;
                 matchindIndex = i;

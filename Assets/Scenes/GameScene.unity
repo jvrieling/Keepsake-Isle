@@ -299,8 +299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GemSpawner
   timeBetweenSpawns: 3
-  shortestTimeBetweenSpawns: 1
-  timeToReachShortest: 15
+  shortestTimeBetweenSpawns: 0.8
+  timeToReachShortest: 30
   timeCurve:
     serializedVersion: 2
     m_Curve:
@@ -329,6 +329,8 @@ MonoBehaviour:
   - {fileID: 7105291397431187011, guid: fa1d5544906641b499984741150027ee, type: 3}
   - {fileID: 430750853973036992, guid: 8ed58acc5aa7ae14e92e0a97961b2fab, type: 3}
   - {fileID: 5102194892044716671, guid: a8b483b7dea001247b2eaa8267a1ad2b, type: 3}
+  - {fileID: 1385094082668286253, guid: 3f217708bfb8e104292d592e95f1902b, type: 3}
+  - {fileID: 1385094082668286253, guid: 3f217708bfb8e104292d592e95f1902b, type: 3}
   chestPrefab: {fileID: 0}
 --- !u!1 &814160224
 GameObject:
