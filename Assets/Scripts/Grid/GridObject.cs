@@ -15,6 +15,8 @@ public abstract class GridObject : MonoBehaviour
 {
     private const float HANG_Y = 0.655f;
 
+    public static event Action<GridObject> OnAnyObjectCleared;
+
     public event Action<GridObject> OnDestroyed;
     public event Action<GridObject> OnGrounded;
     public event Action<GridObject> OnFallingStarted;
@@ -38,6 +40,7 @@ public abstract class GridObject : MonoBehaviour
     public bool IsFalling { get; private set; } = true;
     public bool IsGrounded => !IsFalling;
     public bool MarkedForClearing { get; private set; }
+    public int ScoreValue { get; private set; }
 
     private Coroutine clearRoutine;
     public GridCell currentCell;
@@ -167,6 +170,8 @@ public abstract class GridObject : MonoBehaviour
     {
         Instantiate(clearParticle, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
+
+        OnAnyObjectCleared?.Invoke(this);
     }
 
     private void MarkForClear()
@@ -179,6 +184,7 @@ public abstract class GridObject : MonoBehaviour
     {
         foreach (GridCell cell in cells)
         {
+            if (colourId == -1) cell.GridObject.ScoreValue = 0;
             cell.GridObject.MarkForClear();
         }
 
