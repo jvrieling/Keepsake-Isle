@@ -84,9 +84,11 @@ public class Grid : MonoBehaviour
 
     [SerializeField]
     private int width;
+    public int Width => width;
 
     [SerializeField]
     private int height;
+    public int Height => height;
 
     [SerializeField]
     private Transform bottomLeftCell;
@@ -165,6 +167,13 @@ public class Grid : MonoBehaviour
         }
 
         grid.Clear();
+    }
+
+    public GridCell GetAtCoords((int, int) coords)
+    {
+        if (coords.Item1 < 0 || coords.Item2 < 0 || coords.Item1 >= grid.Count || coords.Item2 >= grid[0].cells.Count) return null;
+
+        return grid[coords.Item1][coords.Item2];
     }
 
     public Column GetRandomColumn()
