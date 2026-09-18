@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cfebba0e6ea84985634ba234c6fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Selectors
-  tweenDuration: 0.5
+  tweenDuration: 0.18
   mainCell:
     <GridObject>k__BackingField: {fileID: 0}
     <WorldPosition>k__BackingField: {x: 0, y: 0}

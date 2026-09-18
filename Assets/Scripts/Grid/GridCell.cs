@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class GridCell
     public (int, int) GridIndex { get; private set; }
     [field: SerializeField]
     public Vector2 WorldPosition { get; private set; }
+    [SerializeField]
+    private float tweenDuration = 0.1f;
 
     public bool IsOccupied => GridObject != null;
 
@@ -26,7 +29,14 @@ public class GridCell
         }
 
         GridObject = newObject;
-        GridObject.OnDestroyed += HandleObjectDestroyed;
+
+        if (GridObject != null)
+        {
+            GridObject.OnDestroyed += HandleObjectDestroyed;
+
+            GridObject.transform.DOKill(true);
+            GridObject.transform.DOMove(WorldPosition, tweenDuration);
+        }
     }
 
     public bool DestroyObject()

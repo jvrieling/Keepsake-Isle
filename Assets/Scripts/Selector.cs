@@ -53,6 +53,20 @@ public class Selectors : MonoBehaviour
             mainCell.GridIndex.Item1,
             mainCell.GridIndex.Item2 - 1)));
         }
+        else if (Input.ButtonAJustPressed)
+        {
+            Debug.Log("!!gamer!!");
+            SwapGridObjects();
+        }
+    }
+
+    private void SwapGridObjects()
+    {
+        GridObject leftObject = mainCell.GridObject;
+        GridObject rightObject = rightCell.GridObject;
+
+        mainCell.SetGridObject(rightObject);
+        rightCell.SetGridObject(leftObject);
     }
 
     private void TryMove(GridCell cell)
