@@ -77,8 +77,7 @@ public abstract class GridObject : MonoBehaviour
             {
                 if (CheckForSpaceBelow())
                 {
-                    State = GridObjectState.Falling;
-                    OnFallingStarted?.Invoke(this);
+                    SetFalling();
                 }
                 else
                 {
@@ -101,7 +100,8 @@ public abstract class GridObject : MonoBehaviour
                 {
                     State = GridObjectState.Grounded;
                     GridCell occupiedCell = Grid.Instance.GetNearestCell(transform.position);
-                    transform.position = occupiedCell.WorldPosition;
+
+                    if (occupiedCell != null)
                     occupiedCell.SetGridObject(this);
 
                     if (!hasBeenGroundedBefore)
@@ -114,6 +114,12 @@ public abstract class GridObject : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetCurrentCell(GridCell cell)
+    {
+        currentCell = cell;
+        transform.position = cell.WorldPosition;
     }
 
     protected virtual void TryClear()
@@ -164,6 +170,27 @@ public abstract class GridObject : MonoBehaviour
         {
             column[matchindIndex].GridObject.TriggerClearRoutine(column.GetRange(matchindIndex, thisIndex - matchindIndex + 1));
         }
+    }
+
+    private void SetFalling()
+    {
+        State = GridObjectState.Falling;
+        OnFallingStarted?.Invoke(this);
+    }
+
+    public void CheckUngrounded()
+    {
+        // If at the bottom of a column we're already grounded
+        if (State == GridObjectState.Falling || currentCell.GridIndex.Item2 <= 0)
+        {
+            return;
+        }
+
+        GridCell cellBelow = Grid.Instance.GetAtCoords((currentCell.GridIndex.Item1, currentCell.GridIndex.Item2 - 1));
+
+        if (cellBelow.GridObject != null) return;
+
+        SetFalling();
     }
 
     protected void OnCleared()

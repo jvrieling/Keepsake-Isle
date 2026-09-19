@@ -4,9 +4,12 @@ using ChickenCoop.Util;
 using System;
 using System.Collections;
 using System.Linq;
+using UnityEditor;
 
+[Serializable]
 public class Column : IEnumerable<GridCell>
 {
+    [SerializeField]
     public List<GridCell> cells;
     public GridObject hangingObject;
 
@@ -241,12 +244,14 @@ public class Grid : MonoBehaviour
 
     public void OnDrawGizmosSelected()
     {
-        if (grid == null ) return; 
+        if (grid == null ) return;
+        Handles.color = Color.green;
+
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                if (grid[i] == null || grid[i][j] == null) return;
+                if (grid[i] == null || grid[i].cells == null || grid[i][j] == null) return;
 
                 if (grid[i][j].IsOccupied)
                 {
@@ -258,6 +263,7 @@ public class Grid : MonoBehaviour
                 }
 
                 Gizmos.DrawSphere(grid[i][j].WorldPosition, 0.01f);
+                Handles.Label(grid[i][j].WorldPosition * 1.1f, $"({grid[i][j].GridIndex.Item1}, {grid[i][j].GridIndex.Item2})");
             }
         }
     }

@@ -26,16 +26,20 @@ public class GridCell
         if (GridObject != null)
         {
             GridObject.OnDestroyed -= HandleObjectDestroyed;
+            GridObject.OnFallingStarted -= HandleObjectFall;
         }
 
         GridObject = newObject;
 
         if (GridObject != null)
         {
+            GridObject.SetCurrentCell(this);
+
             GridObject.OnDestroyed += HandleObjectDestroyed;
+            GridObject.OnFallingStarted += HandleObjectFall;
 
             GridObject.transform.DOKill(true);
-            GridObject.transform.DOMove(WorldPosition, tweenDuration);
+            GridObject.transform.DOMove(WorldPosition, tweenDuration).OnComplete(GridObject.CheckUngrounded);
         }
     }
 
@@ -52,6 +56,24 @@ public class GridCell
     {
         if (gridObject == GridObject)
         {
+            GridObject.OnFallingStarted -= HandleObjectFall;
+            GridObject.OnDestroyed -= HandleObjectDestroyed;
+            GridObject = null;
+
+            GridCell cellAbove = Grid.Instance.GetAtCoords((GridIndex.Item1 + 1, GridIndex.Item2));
+
+            if (cellAbove != null && cellAbove.GridObject != null)
+            {
+                cellAbove.GridObject.CheckUngrounded();
+            }
+        }
+    }
+
+    private void HandleObjectFall(GridObject gridObject)
+    {
+        if (gridObject == GridObject)
+        {
+            GridObject.OnFallingStarted -= HandleObjectFall;
             GridObject.OnDestroyed -= HandleObjectDestroyed;
             GridObject = null;
         }

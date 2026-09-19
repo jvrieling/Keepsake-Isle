@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e71e1b2b47035442967f7b1754b8ec8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e71e1b2b47035442967f7b1754b8ec8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -763,9 +763,11 @@ MonoBehaviour:
   mainCell:
     <GridObject>k__BackingField: {fileID: 0}
     <WorldPosition>k__BackingField: {x: 0, y: 0}
+    tweenDuration: 0.1
   rightCell:
     <GridObject>k__BackingField: {fileID: 0}
     <WorldPosition>k__BackingField: {x: 0, y: 0}
+    tweenDuration: 0.1
 --- !u!1 &368348581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98229fa2076bfd44a8fea25b481e579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grid
+  grid: []
   width: 5
   height: 7
   bottomLeftCell: {fileID: 1086030323}

@@ -55,7 +55,6 @@ public class Selectors : MonoBehaviour
         }
         else if (Input.ButtonAJustPressed)
         {
-            Debug.Log("!!gamer!!");
             SwapGridObjects();
         }
     }
