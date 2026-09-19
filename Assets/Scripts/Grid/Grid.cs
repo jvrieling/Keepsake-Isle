@@ -4,7 +4,9 @@ using ChickenCoop.Util;
 using System;
 using System.Collections;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [Serializable]
 public class Column : IEnumerable<GridCell>
@@ -242,6 +244,7 @@ public class Grid : MonoBehaviour
         return nearestCell;
     }
 
+#if UNITY_EDITOR
     public void OnDrawGizmosSelected()
     {
         if (grid == null ) return;
@@ -267,4 +270,5 @@ public class Grid : MonoBehaviour
             }
         }
     }
+#endif
 }
