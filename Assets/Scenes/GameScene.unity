@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cb62852e52592449047bfedbe8f8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  scoreSystem: {fileID: 0}
-  gameEndPause: 5
+  scoreSystem: {fileID: 322196922}
+  gameEndPause: 3
   fadeSpeed: 0.6
   gameOverScreen: {fileID: 2093148027}
   gameOverClip: {fileID: 8300000, guid: 8db5705fd1c9d7346aa25d32946bd026, type: 3}
