@@ -21,12 +21,12 @@ public class ScoreSystem : MonoBehaviour
 
     private void RefreshUI()
     {
-        scoreText.text = Score.ToString();
+        scoreText.text = Score.ToString("00000");
     }
 
-    private void HandleAnyObjectCleared(GridObject @object)
+    private void HandleAnyObjectCleared(GridObject gridObject)
     {
-        Score += @object.ScoreValue;
+        Score += gridObject.ScoreValue;
 
         RefreshUI();
     }

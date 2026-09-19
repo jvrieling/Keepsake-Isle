@@ -50,6 +50,9 @@ MonoBehaviour:
   colourId: 1
   timeBetweenClears: 0.2
   clearParticle: {fileID: 6352673607928727099, guid: 1509e7f4e707b9f4581826d0f1e5d8a6, type: 3}
+  <ScoreValue>k__BackingField: 10
+  landSound: {fileID: 8300000, guid: 5165616016a04f14eb563e8a1f01d427, type: 3}
+  clearSound: {fileID: 8300000, guid: c86088a5e8a37c0428bfe83d24b003ff, type: 3}
   currentCell:
     <GridObject>k__BackingField: {fileID: 0}
     <WorldPosition>k__BackingField: {x: 0, y: 0}

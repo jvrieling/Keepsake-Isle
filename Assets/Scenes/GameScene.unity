@@ -760,6 +760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Selectors
   tweenDuration: 0.18
+  moveSound: {fileID: 8300000, guid: f52c6ca515caf7a40ba2a782f4d64296, type: 3}
+  swapSound: {fileID: 8300000, guid: 3312afffbea664e4980250218f0ac187, type: 3}
   mainCell:
     <GridObject>k__BackingField: {fileID: 0}
     <WorldPosition>k__BackingField: {x: 0, y: 0}

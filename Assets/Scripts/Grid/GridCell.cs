@@ -41,6 +41,10 @@ public class GridCell
             GridObject.transform.DOKill(true);
             GridObject.transform.DOMove(WorldPosition, tweenDuration).OnComplete(GridObject.CheckUngrounded);
         }
+        else
+        {
+            CheckCellAboveGrounded();
+        }
     }
 
     public bool DestroyObject()
@@ -52,6 +56,16 @@ public class GridCell
         return true;
     }
 
+    private void CheckCellAboveGrounded()
+    {
+        GridCell cellAbove = Grid.Instance.GetAtCoords((GridIndex.Item1, GridIndex.Item2 + 1));
+
+        if (cellAbove != null && cellAbove.GridObject != null)
+        {
+            cellAbove.GridObject.CheckUngrounded();
+        }
+    }
+
     private void HandleObjectDestroyed(GridObject gridObject)
     {
         if (gridObject == GridObject)
@@ -60,12 +74,7 @@ public class GridCell
             GridObject.OnDestroyed -= HandleObjectDestroyed;
             GridObject = null;
 
-            GridCell cellAbove = Grid.Instance.GetAtCoords((GridIndex.Item1 + 1, GridIndex.Item2));
-
-            if (cellAbove != null && cellAbove.GridObject != null)
-            {
-                cellAbove.GridObject.CheckUngrounded();
-            }
+            CheckCellAboveGrounded();
         }
     }
 
@@ -76,6 +85,8 @@ public class GridCell
             GridObject.OnFallingStarted -= HandleObjectFall;
             GridObject.OnDestroyed -= HandleObjectDestroyed;
             GridObject = null;
+
+            CheckCellAboveGrounded();
         }
     }
 }

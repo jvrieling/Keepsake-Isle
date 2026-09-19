@@ -1,3 +1,4 @@
+using GBTemplate;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,11 +37,19 @@ public abstract class GridObject : MonoBehaviour
     [SerializeField]
     private ParticleSystem clearParticle;
 
+    [field: SerializeField]
+    public int ScoreValue { get; private set; }
+
+    [SerializeField]
+    private AudioClip landSound;
+
+    [SerializeField]
+    private AudioClip clearSound;
+
     public GridObjectState State { get; private set; } = GridObjectState.Hanging;
     public bool IsFalling { get; private set; } = true;
     public bool IsGrounded => !IsFalling;
     public bool MarkedForClearing { get; private set; }
-    public int ScoreValue { get; private set; }
 
     private Coroutine clearRoutine;
     public GridCell currentCell;
@@ -109,6 +118,8 @@ public abstract class GridObject : MonoBehaviour
                         TryClear();
                         hasBeenGroundedBefore = true;
                     }
+
+                    GBConsoleController.GetInstance().Sound.PlaySound(landSound);
 
                     OnGrounded?.Invoke(this);
                 }
@@ -195,6 +206,8 @@ public abstract class GridObject : MonoBehaviour
 
     protected void OnCleared()
     {
+        GBConsoleController.GetInstance().Sound.PlaySound(clearSound);
+
         Instantiate(clearParticle, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
 
@@ -211,6 +224,8 @@ public abstract class GridObject : MonoBehaviour
     {
         foreach (GridCell cell in cells)
         {
+            if (cell == null) continue;
+
             if (colourId == -1) cell.GridObject.ScoreValue = 0;
             cell.GridObject.MarkForClear();
         }

@@ -7,6 +7,9 @@ public class Selectors : MonoBehaviour
     [SerializeField]
     private float tweenDuration = 0.5f;
 
+    public AudioClip moveSound;
+    public AudioClip swapSound;
+
     public GridCell mainCell, rightCell;
 
     private GBConsoleController gb;
@@ -64,8 +67,13 @@ public class Selectors : MonoBehaviour
         GridObject leftObject = mainCell.GridObject;
         GridObject rightObject = rightCell.GridObject;
 
+        if ((leftObject != null && leftObject.MarkedForClearing) || 
+            (rightObject != null && rightObject.MarkedForClearing)) return;
+
         mainCell.SetGridObject(rightObject);
         rightCell.SetGridObject(leftObject);
+
+        GBConsoleController.GetInstance().Sound.PlaySound(swapSound);
     }
 
     private void TryMove(GridCell cell)
@@ -82,5 +90,7 @@ public class Selectors : MonoBehaviour
         transform.DOMove(newPosition, tweenDuration);
         mainCell = cell;
         rightCell = cellToTheRight;
+
+        GBConsoleController.GetInstance().Sound.PlaySound(moveSound);
     }
 }
