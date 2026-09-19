@@ -28,8 +28,15 @@ public class GemSpawner : MonoBehaviour
     private float currentTimeBetweenSpawns;
     private float timeSinceLastSpawn;
 
+    private void Start()
+    {
+        timeSinceLastSpawn = timeBetweenSpawns / 2;
+    }
+
     private void Update()
     {
+        if (GameManager.Instance.State == GameState.Ended) return;
+
         time += Time.deltaTime;
 
         float t = Mathf.InverseLerp(0, timeToReachShortest, time);

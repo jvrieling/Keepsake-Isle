@@ -14,9 +14,11 @@ public enum GridObjectState
 
 public abstract class GridObject : MonoBehaviour
 {
-    private const float HANG_Y = 0.655f;
+    private const float HANG_Y = 0.722f;
 
+    public static event Action<GridObject> OnAnyObjectCannotFall;
     public static event Action<GridObject> OnAnyObjectCleared;
+    public static event Action<GridObject> OnAnyScoringMatchMade;
 
     public event Action<GridObject> OnDestroyed;
     public event Action<GridObject> OnGrounded;
@@ -27,6 +29,9 @@ public abstract class GridObject : MonoBehaviour
 
     [SerializeField]
     private float fallSpeed = 0.2f;
+
+    [SerializeField]
+    private float fallSpeedMultiplier = 2;
 
     [SerializeField]
     protected int colourId = 1;
@@ -51,6 +56,8 @@ public abstract class GridObject : MonoBehaviour
     public bool IsGrounded => !IsFalling;
     public bool MarkedForClearing { get; private set; }
 
+    private float currentFallSpeed;
+
     private Coroutine clearRoutine;
     public GridCell currentCell;
     public Vector2 lastCheckedPos;
@@ -69,6 +76,8 @@ public abstract class GridObject : MonoBehaviour
         startingPos.y = HANG_Y;
 
         transform.position = startingPos;
+
+        currentFallSpeed = fallSpeed;
     }
 
     protected virtual void OnDestroy()
@@ -78,6 +87,8 @@ public abstract class GridObject : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (GameManager.Instance.State == GameState.Ended || GameManager.Instance.State == GameState.Idle) return;
+ 
         if (State == GridObjectState.Hanging)
         {
             hangDuration += Time.deltaTime;
@@ -90,7 +101,7 @@ public abstract class GridObject : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("!! -- NO SPACE TO FALL -- !!");
+                    OnAnyObjectCannotFall?.Invoke(this);
                 }
             }
         }
@@ -111,7 +122,7 @@ public abstract class GridObject : MonoBehaviour
                     GridCell occupiedCell = Grid.Instance.GetNearestCell(transform.position);
 
                     if (occupiedCell != null)
-                    occupiedCell.SetGridObject(this);
+                    occupiedCell.SetGridObject(this, true);
 
                     if (!hasBeenGroundedBefore)
                     {
@@ -180,11 +191,17 @@ public abstract class GridObject : MonoBehaviour
         if (connectionMade)
         {
             column[matchindIndex].GridObject.TriggerClearRoutine(column.GetRange(matchindIndex, thisIndex - matchindIndex + 1));
+
+            if (blockerIndex == -1)
+            {
+                OnAnyScoringMatchMade?.Invoke(this);
+            }
         }
     }
 
     private void SetFalling()
     {
+        currentFallSpeed = fallSpeed * fallSpeedMultiplier;
         State = GridObjectState.Falling;
         OnFallingStarted?.Invoke(this);
     }

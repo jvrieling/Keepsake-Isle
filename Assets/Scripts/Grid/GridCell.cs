@@ -21,12 +21,14 @@ public class GridCell
         GridIndex = (column, row);
     }
 
-    public void SetGridObject(GridObject newObject)
+    public void SetGridObject(GridObject newObject, bool allowDestroyOld = false)
     {
         if (GridObject != null)
         {
             GridObject.OnDestroyed -= HandleObjectDestroyed;
             GridObject.OnFallingStarted -= HandleObjectFall;
+
+            if (allowDestroyOld) DestroyObject();
         }
 
         GridObject = newObject;
