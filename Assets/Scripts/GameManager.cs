@@ -90,6 +90,10 @@ public class GameManager : MonoBehaviour
 
     private void HandleCannotFall(GridObject gridObject)
     {
+        if (gb == null)
+        {
+            gb = GBConsoleController.GetInstance();
+        }
         State = GameState.Ended;
         gb.Sound.StopMusic();
         gb.Sound.PlaySound(gameOverClip);
